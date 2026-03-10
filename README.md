@@ -9,34 +9,39 @@ An MCP server that connects Claude to your Strava data. Get training load analys
 - **Weekly training plan** — recommended hours and workout types based on your current form
 - **Weekly statistics** — volume trends over time
 
-## Installation
+## Quick install
 
-### Step 1: Create a Strava API application
+### 1. Create a Strava API app
 
-1. Go to [https://www.strava.com/settings/api](https://www.strava.com/settings/api)
-2. Fill in the form:
-   - **Application Name**: anything (e.g. "My MCP")
-   - **Category**: choose any
-   - **Website**: `http://localhost`
-   - **Authorization Callback Domain**: `localhost`
-3. After creating, note your **Client ID** and **Client Secret**
+Go to [strava.com/settings/api](https://www.strava.com/settings/api) and create an app with:
+- **Website**: `http://localhost`
+- **Authorization Callback Domain**: `localhost`
 
-### Step 2: Install and authenticate
+Note your **Client ID** and **Client Secret**.
 
-Open a terminal and run:
+### 2. Run the installer
+
+Open a terminal and paste:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/ArjanLig/strava-mcp/main/install.sh | bash
+```
+
+This will install everything, walk you through Strava authorization, and configure Claude Desktop automatically.
+
+### 3. Restart Claude Desktop
+
+That's it! Ask Claude about your Strava activities.
+
+## Manual install
+
+If you prefer to set things up yourself:
 
 ```bash
 uvx strava-training-mcp --auth
 ```
 
-This will:
-1. Ask for your Client ID and Client Secret
-2. Open your browser to authorize with Strava
-3. Save your tokens to `~/.strava-mcp/config.json`
-
-### Step 3: Add to Claude Desktop
-
-Open Claude Desktop settings → Developer → Edit Config, and add:
+Then add to your Claude Desktop config (`Settings → Developer → Edit Config`):
 
 ```json
 {
@@ -48,8 +53,6 @@ Open Claude Desktop settings → Developer → Edit Config, and add:
   }
 }
 ```
-
-Restart Claude Desktop. You can now ask Claude about your Strava activities!
 
 ## Example prompts
 
@@ -66,5 +69,5 @@ Run `uvx strava-training-mcp --auth` to set up authentication.
 **"Token expired" errors**
 Tokens are refreshed automatically. If it persists, run `uvx strava-training-mcp --auth` again.
 
-**Can't find config file**
-Credentials are stored in `~/.strava-mcp/config.json`.
+**Credentials location**
+`~/.strava-mcp/config.json`
