@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "strava-mcp"
+version = "0.1.0"
+description = "MCP server for Strava — training load analysis, weekly plans, and activity insights"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Arjan" }
+]
+keywords = ["mcp", "strava", "training", "cycling"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "mcp>=0.9.0",
+    "stravalib>=1.6.0",
+]
+
+[project.scripts]
+strava-mcp = "strava_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/ArjanLig/strava-mcp"
