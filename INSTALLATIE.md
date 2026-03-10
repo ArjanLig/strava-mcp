@@ -1,93 +1,48 @@
-# Strava koppelen aan Claude — Installatiehandleiding
+# Strava koppelen aan Claude
 
 Met deze koppeling kun je in Claude vragen stellen over je Strava-data: trainingsbelasting, weekplannen, activiteiten en meer.
 
 ## Wat heb je nodig?
 
 - Een Strava-account
-- Claude Desktop (gratis download: https://claude.ai/download)
+- Claude Desktop (download: https://claude.ai/download)
 
 ## Stap 1: Strava API app aanmaken
 
 1. Ga naar https://www.strava.com/settings/api en log in
 2. Vul het formulier in:
-   - **Application Name**: mag alles zijn, bijv. `Claude Koppeling`
+   - **Application Name**: mag alles zijn, bijv. `Claude`
    - **Category**: kies iets willekeurigs
-   - **Website**: vul in `http://localhost`
-   - **Authorization Callback Domain**: vul in `localhost`
+   - **Website**: `http://localhost`
+   - **Authorization Callback Domain**: `localhost`
 3. Klik op **Create**
-4. Je ziet nu een **Client ID** (een getal) en een **Client Secret** (een lange code) — die heb je zo nodig
+4. Je ziet nu een **Client ID** en **Client Secret** — houd deze pagina open
 
-## Stap 2: Terminal openen
+## Stap 2: Installeren
 
-- **Mac**: open de app "Terminal" (zoek via Spotlight met Cmd+Spatie)
-- **Windows**: open "PowerShell" (zoek in het startmenu)
-
-## Stap 3: Installeren en koppelen
-
-Kopieer en plak dit in je terminal en druk op Enter:
+Open Terminal (Mac: zoek "Terminal" via Cmd+Spatie) en plak dit:
 
 ```
-uvx strava-training-mcp --auth
+curl -sSL https://raw.githubusercontent.com/ArjanLig/strava-mcp/main/install.sh | bash
 ```
 
-> **Krijg je een foutmelding dat `uvx` niet gevonden wordt?**
-> Installeer eerst `uv` door dit te plakken in je terminal:
->
-> Mac/Linux:
-> ```
-> curl -LsSf https://astral.sh/uv/install.sh | sh
-> ```
-> Windows:
-> ```
-> powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-> ```
-> Sluit je terminal, open een nieuwe, en probeer het opnieuw.
+Het script:
+1. Vraagt om je **Client ID** en **Client Secret** van stap 1
+2. Opent je browser — klik op **Authorize**
+3. Configureert Claude Desktop automatisch
 
-Het programma vraagt nu om:
-1. **Client ID** — plak het getal van stap 1
-2. **Client Secret** — plak de code van stap 1
-3. Je browser opent automatisch — klik op **Authorize** op de Strava-pagina
-4. Je wordt doorgestuurd naar een pagina die niet laadt (dat is normaal!)
-5. Kopieer de **volledige URL** uit je adresbalk en plak die in de terminal
+## Stap 3: Testen
 
-Als je "Authentication successful!" ziet, is het gelukt!
+Herstart Claude Desktop en probeer:
 
-## Stap 4: Claude Desktop instellen
-
-1. Open Claude Desktop
-2. Ga naar **Settings** (tandwieltje linksonder) → **Developer** → **Edit Config**
-3. Er opent een bestandje. Vervang de inhoud door:
-
-```json
-{
-  "mcpServers": {
-    "strava": {
-      "command": "uvx",
-      "args": ["strava-training-mcp"]
-    }
-  }
-}
-```
-
-4. Sla het bestand op en sluit het
-5. **Sluit Claude Desktop volledig af en open het opnieuw**
-
-## Stap 5: Testen!
-
-Open een nieuw gesprek in Claude en probeer:
-
-- "Wat waren mijn laatste 5 ritten?"
+- "Wat waren mijn laatste ritten?"
 - "Hoe ziet mijn trainingsbelasting eruit?"
 - "Geef me een trainingsplan voor deze week"
 
 ## Problemen?
 
-**"Missing credentials" foutmelding**
-Voer opnieuw uit: `uvx strava-training-mcp --auth`
+**Script werkt niet**
+Sluit Terminal, open opnieuw, en plak het commando nog een keer.
 
-**Claude herkent de Strava-tools niet**
-Controleer of je Claude Desktop hebt herstart na stap 4.
-
-**"uvx" wordt niet gevonden**
-Installeer `uv` via de instructies bij stap 3 en herstart je terminal.
+**Claude herkent Strava niet**
+Zorg dat je Claude Desktop hebt herstart na de installatie.
