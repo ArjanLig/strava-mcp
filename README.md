@@ -38,7 +38,7 @@ That's it! Ask Claude about your Strava activities.
 If you prefer to set things up yourself:
 
 ```bash
-uvx strava-training-mcp --auth
+uvx strava-training-mcp@latest --auth
 ```
 
 Then add to your Claude Desktop config (`Settings → Developer → Edit Config`):
@@ -64,10 +64,10 @@ Then add to your Claude Desktop config (`Settings → Developer → Edit Config`
 ## Troubleshooting
 
 **"Missing credentials" error**
-Run `uvx strava-training-mcp --auth` to set up authentication.
+Run `uvx strava-training-mcp@latest --auth` to set up authentication.
 
 **"Token expired" errors**
-Tokens are refreshed automatically. If it persists, run `uvx strava-training-mcp --auth` again.
+Tokens are refreshed automatically. If it persists, run `uvx strava-training-mcp@latest --auth` again.
 
 **Credentials location**
 `~/.strava-mcp/config.json`
