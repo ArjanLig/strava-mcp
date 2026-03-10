@@ -26,7 +26,7 @@ An MCP server that connects Claude to your Strava data. Get training load analys
 Open a terminal and run:
 
 ```bash
-uvx strava-mcp --auth
+uvx strava-training-mcp --auth
 ```
 
 This will:
@@ -43,7 +43,7 @@ Open Claude Desktop settings → Developer → Edit Config, and add:
   "mcpServers": {
     "strava": {
       "command": "uvx",
-      "args": ["strava-mcp"]
+      "args": ["strava-training-mcp"]
     }
   }
 }
@@ -61,10 +61,10 @@ Restart Claude Desktop. You can now ask Claude about your Strava activities!
 ## Troubleshooting
 
 **"Missing credentials" error**
-Run `uvx strava-mcp --auth` to set up authentication.
+Run `uvx strava-training-mcp --auth` to set up authentication.
 
 **"Token expired" errors**
-Tokens are refreshed automatically. If it persists, run `uvx strava-mcp --auth` again.
+Tokens are refreshed automatically. If it persists, run `uvx strava-training-mcp --auth` again.
 
 **Can't find config file**
 Credentials are stored in `~/.strava-mcp/config.json`.

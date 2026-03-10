@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "strava-mcp"
+name = "strava-training-mcp"
 version = "0.1.0"
 description = "MCP server for Strava — training load analysis, weekly plans, and activity insights"
 readme = "README.md"
@@ -25,6 +25,9 @@ dependencies = [
 
 [project.scripts]
 strava-mcp = "strava_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/strava_mcp"]
 
 [project.urls]
 Homepage = "https://github.com/ArjanLig/strava-mcp"
