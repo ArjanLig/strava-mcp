@@ -20,7 +20,9 @@ Met deze koppeling kun je in Claude vragen stellen over je Strava-data: training
 
 ## Stap 2: Installeren
 
-Open Terminal (Mac: zoek "Terminal" via Cmd+Spatie) en plak dit:
+Open een terminal en plak het commando hieronder:
+- **Mac**: zoek "Terminal" via Cmd+Spatie
+- **Windows**: druk op de Windows-toets, typ `PowerShell`, en klik op **Windows PowerShell**
 
 ```
 curl -sSL https://raw.githubusercontent.com/ArjanLig/strava-mcp/main/install.sh | bash
