@@ -1,5 +1,7 @@
 # Strava MCP
 
+[![MCP Badge](https://lobehub.com/badge/mcp/arjanlig-strava-mcp-server)](https://lobehub.com/mcp/arjanlig-strava-mcp-server)
+
 An MCP server that connects Claude to your Strava data. Get training load analysis, weekly plans, and activity insights — all through conversation.
 
 ## What it does
