@@ -35,7 +35,9 @@ export async function GET(req: NextRequest) {
   });
 
   if (!tokenRes.ok) {
-    return NextResponse.json({ error: "strava_token_exchange_failed" }, { status: 502 });
+    const errorBody = await tokenRes.text();
+    console.error("Strava token exchange failed:", tokenRes.status, errorBody);
+    return NextResponse.json({ error: "strava_token_exchange_failed", status: tokenRes.status, detail: errorBody }, { status: 502 });
   }
 
   const tokenData = await tokenRes.json() as {
