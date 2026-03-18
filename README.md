@@ -11,7 +11,29 @@ An MCP server that connects Claude to your Strava data. Get training load analys
 - **Weekly training plan** — recommended hours and workout types based on your current form
 - **Weekly statistics** — volume trends over time
 
-## Quick install
+## Install (recommended)
+
+No terminal needed. Works with Claude Desktop and claude.ai.
+
+### 1. Add the connector
+
+Open Claude Desktop → **Settings** → **Connectors** → **Add custom connector**
+
+Paste this URL:
+
+```
+https://strava-mcp-web.vercel.app/mcp
+```
+
+### 2. Authorize Strava
+
+Claude will ask you to connect your Strava account the first time you use it. Click **Authorize** and you're done.
+
+That's it! Ask Claude about your training.
+
+## Alternative: local install
+
+If you prefer running the server locally:
 
 ### 1. Create a Strava API app
 
@@ -19,42 +41,13 @@ Go to [strava.com/settings/api](https://www.strava.com/settings/api) and create 
 - **Website**: `http://localhost`
 - **Authorization Callback Domain**: `localhost`
 
-Note your **Client ID** and **Client Secret**.
-
 ### 2. Run the installer
-
-Open a terminal and paste:
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/ArjanLig/strava-mcp/main/install.sh | bash
 ```
 
-This will install everything, walk you through Strava authorization, and configure Claude Desktop automatically.
-
 ### 3. Restart Claude Desktop
-
-That's it! Ask Claude about your Strava activities.
-
-## Manual install
-
-If you prefer to set things up yourself:
-
-```bash
-uvx strava-training-mcp@latest --auth
-```
-
-Then add to your Claude Desktop config (`Settings → Developer → Edit Config`):
-
-```json
-{
-  "mcpServers": {
-    "strava": {
-      "command": "uvx",
-      "args": ["strava-training-mcp"]
-    }
-  }
-}
-```
 
 ## Example prompts
 
@@ -65,11 +58,11 @@ Then add to your Claude Desktop config (`Settings → Developer → Edit Config`
 
 ## Troubleshooting
 
-**"Missing credentials" error**
+**Remote connector not working?**
+Remove and re-add the connector in Settings → Connectors.
+
+**Local install: "Missing credentials" error**
 Run `uvx strava-training-mcp@latest --auth` to set up authentication.
 
-**"Token expired" errors**
-Tokens are refreshed automatically. If it persists, run `uvx strava-training-mcp@latest --auth` again.
-
-**Credentials location**
-`~/.strava-mcp/config.json`
+**Local install: tokens**
+Tokens are refreshed automatically. Credentials stored in `~/.strava-mcp/config.json`.
