@@ -11,7 +11,7 @@ An MCP server that connects Claude to your Strava data. Get training load analys
 - **Weekly training plan** — recommended hours and workout types based on your current form
 - **Weekly statistics** — volume trends over time
 
-## Install (recommended)
+## Install
 
 No terminal needed. Works with Claude Desktop and claude.ai.
 
@@ -31,24 +31,6 @@ Claude will ask you to connect your Strava account the first time you use it. Cl
 
 That's it! Ask Claude about your training.
 
-## Alternative: local install
-
-If you prefer running the server locally:
-
-### 1. Create a Strava API app
-
-Go to [strava.com/settings/api](https://www.strava.com/settings/api) and create an app with:
-- **Website**: `http://localhost`
-- **Authorization Callback Domain**: `localhost`
-
-### 2. Run the installer
-
-```bash
-curl -sSL https://raw.githubusercontent.com/ArjanLig/strava-mcp/main/install.sh | bash
-```
-
-### 3. Restart Claude Desktop
-
 ## Example prompts
 
 - "What were my last 5 rides?"
@@ -58,11 +40,5 @@ curl -sSL https://raw.githubusercontent.com/ArjanLig/strava-mcp/main/install.sh 
 
 ## Troubleshooting
 
-**Remote connector not working?**
+**Connector not working?**
 Remove and re-add the connector in Settings → Connectors.
-
-**Local install: "Missing credentials" error**
-Run `uvx strava-training-mcp@latest --auth` to set up authentication.
-
-**Local install: tokens**
-Tokens are refreshed automatically. Credentials stored in `~/.strava-mcp/config.json`.
