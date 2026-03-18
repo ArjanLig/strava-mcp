@@ -20,10 +20,15 @@ function createServer(userId: string): McpServer {
   );
 
   for (const tool of tools) {
-    server.tool(tool.name, tool.description ?? "", async (args: Record<string, unknown>) => {
-      const content = await handleTool(userId, tool.name, args);
-      return { content };
-    });
+    server.tool(
+      tool.name,
+      tool.description ?? "",
+      tool.inputSchema.properties ?? {},
+      async (args: Record<string, unknown>) => {
+        const content = await handleTool(userId, tool.name, args);
+        return { content };
+      }
+    );
   }
 
   return server;
