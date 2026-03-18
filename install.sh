@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+main() {
+
 echo ""
 echo "=================================="
 echo "  Strava MCP Installer"
@@ -74,3 +76,7 @@ echo "Herstart Claude Desktop en vraag bijvoorbeeld:"
 echo '  "Wat waren mijn laatste 5 ritten?"'
 echo '  "Hoe ziet mijn trainingsbelasting eruit?"'
 echo ""
+
+}
+
+main
