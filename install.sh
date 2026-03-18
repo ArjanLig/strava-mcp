@@ -18,7 +18,7 @@ fi
 # Step 2: Run auth flow
 echo ">> Strava koppeling starten..."
 echo ""
-uvx strava-training-mcp@latest --auth
+uvx strava-training-mcp@latest --auth < /dev/tty
 
 # Step 3: Configure Claude Desktop
 echo ""
