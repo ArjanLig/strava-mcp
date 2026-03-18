@@ -20,7 +20,11 @@ fi
 # Step 2: Run auth flow
 echo ">> Strava koppeling starten..."
 echo ""
-uvx strava-training-mcp@latest --auth < /dev/tty
+if ! uvx strava-training-mcp@latest --auth < /dev/tty; then
+    echo ""
+    echo ">> Strava koppeling niet voltooid. Je kunt dit later opnieuw doen met:"
+    echo "   uvx strava-training-mcp@latest --auth"
+fi
 
 # Step 3: Configure Claude Desktop
 echo ""
