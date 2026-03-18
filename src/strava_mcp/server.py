@@ -1,9 +1,14 @@
+import os
 import sys
 import asyncio
 from datetime import datetime, timedelta
 from mcp.server import Server
 from mcp.server.stdio import stdio_server
 from mcp.types import Tool, TextContent
+
+# Suppress stravalib warnings about missing env vars (we use config file instead)
+os.environ["SILENCE_TOKEN_WARNINGS"] = "true"
+
 from stravalib.client import Client
 from stravalib.exc import AccessUnauthorized
 from strava_mcp.config import get_credentials, update_tokens
@@ -342,7 +347,10 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             for activity in activities:
                 date = activity.start_date_local.strftime("%d-%m-%Y %H:%M")
                 distance = round(float(activity.distance) / 1000, 1) if activity.distance else 0
-                duration = str(activity.moving_time).split(".")[0]
+                total_secs = int(activity.moving_time.total_seconds()) if hasattr(activity.moving_time, 'total_seconds') else int(activity.moving_time)
+                hours, remainder = divmod(total_secs, 3600)
+                mins, secs = divmod(remainder, 60)
+                duration = f"{hours}:{mins:02d}:{secs:02d}" if hours else f"{mins}:{secs:02d}"
 
                 result += f"{date}\n"
                 result += f"   {activity.name}\n"

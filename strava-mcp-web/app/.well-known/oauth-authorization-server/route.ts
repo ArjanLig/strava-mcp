@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const base = process.env.NEXT_PUBLIC_BASE_URL!;
+  const base = process.env.NEXT_PUBLIC_BASE_URL!.trim();
 
   return NextResponse.json({
     issuer: base,
