@@ -1,66 +1,83 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { useState } from "react";
+
+const MCP_URL = "https://strava-mcp.vercel.app/mcp";
 
 export default function Home() {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy() {
+    await navigator.clipboard.writeText(MCP_URL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="container">
+      <div className="hero">
+        <h1>Strava for Claude</h1>
+        <p className="subtitle">
+          Connect your Strava account to Claude and ask questions about your
+          training, activities, and performance — in plain English.
+        </p>
+      </div>
+
+      <section className="steps">
+        <div className="step">
+          <div className="step-number">1</div>
+          <div className="step-content">
+            <h2>Copy the MCP URL</h2>
+            <div className="url-box">
+              <code className="url-text">{MCP_URL}</code>
+              <button className="copy-button" onClick={handleCopy}>
+                {copied ? "Copied!" : "Copy"}
+              </button>
+            </div>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="step">
+          <div className="step-number">2</div>
+          <div className="step-content">
+            <h2>Add to Claude Desktop</h2>
+            <p className="step-description">
+              Open Claude Desktop, go to{" "}
+              <strong>Settings → Integrations</strong>, paste the URL, and save.
+              Claude will prompt you to authorize with Strava the first time you
+              ask a Strava question.
+            </p>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="note">
+        <p>
+          Strava authorization happens automatically — Claude will guide you
+          through connecting your account on first use.
+        </p>
+      </section>
+
+      <section className="examples">
+        <h2>What you can ask Claude</h2>
+        <ul>
+          <li>"How many kilometers did I run last month?"</li>
+          <li>"What was my longest ride this year?"</li>
+          <li>"Show me my 5 most recent activities."</li>
+          <li>"What's my average pace over the last 10 runs?"</li>
+          <li>"How does this week compare to last week?"</li>
+        </ul>
+      </section>
+
+      <footer className="footer">
+        <a
+          href="https://github.com/ArjanLig/strava-mcp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on GitHub
+        </a>
+      </footer>
+    </main>
   );
 }
