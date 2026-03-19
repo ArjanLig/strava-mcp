@@ -5,3 +5,4 @@ build/
 .env
 *.pyc
 .venv/
+.vercel

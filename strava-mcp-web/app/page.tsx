@@ -43,8 +43,9 @@ export default function Home() {
           <div className="step-content">
             <h2>Add to Claude Desktop</h2>
             <p className="step-description">
-              Open Claude Desktop, go to{" "}
-              <strong>Settings → Connectors → Add custom connector</strong>,
+              Open Claude Desktop or{" "}
+              <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">claude.ai</a>,
+              go to <strong>Settings → Connectors → Add custom connector</strong>,
               paste the URL, and connect. Claude will ask you to authorize with
               Strava on first use.
             </p>
