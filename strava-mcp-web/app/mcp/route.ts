@@ -1,5 +1,6 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
+import { ListToolsRequestSchema, CallToolRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 import { verifyAccessToken } from "@/lib/crypto";
 import { tools, handleTool } from "@/lib/tools";
 
@@ -13,23 +14,21 @@ async function authenticate(req: Request): Promise<string> {
   return verifyAccessToken(auth.slice(7));
 }
 
-function createServer(userId: string): McpServer {
-  const server = new McpServer(
+function createServer(userId: string): Server {
+  const server = new Server(
     { name: "strava-mcp", version: "1.0.0" },
     { capabilities: { tools: {} } }
   );
 
-  for (const tool of tools) {
-    server.tool(
-      tool.name,
-      tool.description ?? "",
-      tool.inputSchema.properties ?? {},
-      async (args: Record<string, unknown>) => {
-        const content = await handleTool(userId, tool.name, args);
-        return { content };
-      }
-    );
-  }
+  server.setRequestHandler(ListToolsRequestSchema, async () => ({
+    tools,
+  }));
+
+  server.setRequestHandler(CallToolRequestSchema, async (request) => {
+    const { name, arguments: args } = request.params;
+    const content = await handleTool(userId, name, args ?? {});
+    return { content };
+  });
 
   return server;
 }
