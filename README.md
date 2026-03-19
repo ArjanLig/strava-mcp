@@ -6,6 +6,28 @@ Connect your Strava training data directly to Claude. This MCP (Model Context Pr
 
 ![Strava × Claude MCP](strava_claude_mcp_logo.svg)
 
+## Install
+
+No terminal needed. Works with Claude Desktop and claude.ai.
+
+**Prerequisites:** A Strava account with recorded activities and Claude Pro, Team, or Enterprise.
+
+### 1. Add the connector
+
+Open Claude Desktop → **Settings** → **Connectors** → **Add custom connector**
+
+Paste this URL:
+
+```
+https://strava-mcp-web.vercel.app/mcp
+```
+
+### 2. Authorize Strava
+
+Claude will ask you to connect your Strava account the first time you use it. Click **Authorize** and you're done.
+
+That's it! Ask Claude about your training.
+
 ## What it does
 
 The Strava MCP server gives Claude real-time access to your Strava data, enabling conversations like:
@@ -49,31 +71,6 @@ Here's what a typical coaching conversation looks like:
 4. **Claude:** "You're well rested with a TSB of +8. Good opportunity for a sweet spot session — something like 60 minutes at 85-90% FTP. You have room to push today."
 
 Over time, Claude builds up context about your goals, your bike, your FTP, and your schedule — making the advice increasingly personalized.
-
-## Install
-
-No terminal needed. Works with Claude Desktop and claude.ai.
-
-### Prerequisites
-
-- A Strava account with recorded activities
-- Claude Pro, Team, or Enterprise (for MCP connector support)
-
-### 1. Add the connector
-
-Open Claude Desktop → **Settings** → **Connectors** → **Add custom connector**
-
-Paste this URL:
-
-```
-https://strava-mcp-web.vercel.app/mcp
-```
-
-### 2. Authorize Strava
-
-Claude will ask you to connect your Strava account the first time you use it. Click **Authorize** and you're done.
-
-That's it! Ask Claude about your training.
 
 ## Example use cases
 
