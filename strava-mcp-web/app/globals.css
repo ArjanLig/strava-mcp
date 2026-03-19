@@ -122,14 +122,45 @@ a:hover {
   line-height: 1.6;
 }
 
-.note {
+.features {
+  margin-bottom: 48px;
+}
+
+.features h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 500px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature {
   background: #111;
   border: 1px solid #2a2a2a;
-  border-left: 3px solid #fc4c02;
-  border-radius: 4px;
-  padding: 14px 16px;
-  margin-bottom: 40px;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.feature h3 {
   font-size: 0.9rem;
+  font-weight: 600;
+  color: #fc4c02;
+  margin-bottom: 6px;
+}
+
+.feature p {
+  font-size: 0.85rem;
   color: #a0a0a0;
   line-height: 1.5;
 }

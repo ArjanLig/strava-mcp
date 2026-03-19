@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const MCP_URL = "https://strava-mcp.vercel.app/mcp";
+const MCP_URL = "https://strava-mcp-web.vercel.app/mcp";
 
 export default function Home() {
   const [copied, setCopied] = useState(false);
@@ -18,8 +18,9 @@ export default function Home() {
       <div className="hero">
         <h1>Strava for Claude</h1>
         <p className="subtitle">
-          Connect your Strava account to Claude and ask questions about your
-          training, activities, and performance — in plain English.
+          Turn Claude into your personal cycling coach. This MCP server connects
+          your Strava data to Claude — giving it real-time access to your
+          activities, training load, and fitness trends.
         </p>
       </div>
 
@@ -43,29 +44,56 @@ export default function Home() {
             <h2>Add to Claude Desktop</h2>
             <p className="step-description">
               Open Claude Desktop, go to{" "}
-              <strong>Settings → Integrations</strong>, paste the URL, and save.
-              Claude will prompt you to authorize with Strava the first time you
-              ask a Strava question.
+              <strong>Settings → Connectors → Add custom connector</strong>,
+              paste the URL, and connect. Claude will ask you to authorize with
+              Strava on first use.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="note">
-        <p>
-          Strava authorization happens automatically — Claude will guide you
-          through connecting your account on first use.
-        </p>
+      <section className="features">
+        <h2>What Claude can do with your Strava data</h2>
+        <div className="feature-grid">
+          <div className="feature">
+            <h3>Training load analysis</h3>
+            <p>
+              ATL, CTL, and TSB metrics with actionable advice — rest, easy,
+              moderate, or hard training recommendations.
+            </p>
+          </div>
+          <div className="feature">
+            <h3>Weekly training plan</h3>
+            <p>
+              Recommended hours and workout types based on your current fitness
+              and fatigue levels.
+            </p>
+          </div>
+          <div className="feature">
+            <h3>Activity insights</h3>
+            <p>
+              Deep dives into your rides — power, heart rate, speed, suffer
+              score, and how it fits your broader plan.
+            </p>
+          </div>
+          <div className="feature">
+            <h3>Progress tracking</h3>
+            <p>
+              Weekly volume trends, ramp rate monitoring, and injury risk
+              warnings when you build too fast.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="examples">
-        <h2>What you can ask Claude</h2>
+        <h2>Example conversations</h2>
         <ul>
-          <li>"How many kilometers did I run last month?"</li>
-          <li>"What was my longest ride this year?"</li>
-          <li>"Show me my 5 most recent activities."</li>
-          <li>"What's my average pace over the last 10 runs?"</li>
-          <li>"How does this week compare to last week?"</li>
+          <li>"I want to ride tonight, what should I do?"</li>
+          <li>"How is my training load looking?"</li>
+          <li>"Give me a training plan for this week"</li>
+          <li>"How did my last ride compare to the week before?"</li>
+          <li>"I'm training for a 150km race in April — am I on track?"</li>
         </ul>
       </section>
 
