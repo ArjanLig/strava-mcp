@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "strava-training-mcp"
-version = "0.2.1"
+version = "0.3.0"
 description = "MCP server for Strava — training load analysis, weekly plans, and activity insights"
 readme = "README.md"
 license = "MIT"

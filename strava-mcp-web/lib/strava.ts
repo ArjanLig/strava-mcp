@@ -54,3 +54,7 @@ export async function getActivities(userId: string, limit: number = 10) {
 export async function getActivity(userId: string, activityId: number) {
   return stravaFetch(userId, `/activities/${activityId}`);
 }
+
+export async function getActivityStreams(userId: string, activityId: number, types: string[] = ["watts", "heartrate"]) {
+  return stravaFetch(userId, `/activities/${activityId}/streams?keys=${types.join(",")}&key_type=time`);
+}
