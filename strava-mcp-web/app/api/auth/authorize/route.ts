@@ -16,15 +16,12 @@ export async function GET(req: NextRequest) {
   await saveOAuthState(oauthState, { userId, clientId, redirectUri, codeChallenge });
 
   const base = process.env.NEXT_PUBLIC_BASE_URL!;
-  const stravaClientId = process.env.STRAVA_CLIENT_ID!;
 
-  const stravaParams = new URLSearchParams({
-    client_id: stravaClientId,
-    redirect_uri: `${base}/api/auth/callback`,
-    response_type: "code",
-    scope: "read,activity:read_all",
-    state: `${oauthState}|${state}`,
+  // Redirect to setup page where user chooses auth method
+  const setupParams = new URLSearchParams({
+    oauth_state: oauthState,
+    client_state: state,
   });
 
-  return NextResponse.redirect(`https://www.strava.com/oauth/authorize?${stravaParams.toString()}`);
+  return NextResponse.redirect(`${base}/setup?${setupParams.toString()}`);
 }

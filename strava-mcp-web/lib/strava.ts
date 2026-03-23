@@ -1,4 +1,4 @@
-import { getUserTokens, saveUserTokens } from "./redis";
+import { getUserTokens, getUserStravaApp, saveUserTokens } from "./redis";
 
 const STRAVA_API = "https://www.strava.com/api/v3";
 
@@ -7,12 +7,17 @@ async function getValidToken(userId: string): Promise<string> {
   if (!tokens) throw new Error("No tokens found — re-authenticate required");
 
   if (Date.now() / 1000 > tokens.stravaExpiresAt - 60) {
+    // Use per-user Strava credentials if available, otherwise server credentials
+    const userApp = await getUserStravaApp(userId);
+    const clientId = userApp?.stravaClientId ?? process.env.STRAVA_CLIENT_ID;
+    const clientSecret = userApp?.stravaClientSecret ?? process.env.STRAVA_CLIENT_SECRET;
+
     const res = await fetch("https://www.strava.com/oauth/token", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        client_id: process.env.STRAVA_CLIENT_ID,
-        client_secret: process.env.STRAVA_CLIENT_SECRET,
+        client_id: clientId,
+        client_secret: clientSecret,
         grant_type: "refresh_token",
         refresh_token: tokens.stravaRefreshToken,
       }),

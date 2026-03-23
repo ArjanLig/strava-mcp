@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { randomBytes } from "crypto";
-import { getOAuthState, saveUserTokens, saveAuthCode } from "@/lib/redis";
+import { getOAuthState, getUserStravaApp, saveUserTokens, saveAuthCode } from "@/lib/redis";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -22,13 +22,18 @@ export async function GET(req: NextRequest) {
 
   const { userId, clientId, redirectUri, codeChallenge } = stateData;
 
+  // Use per-user Strava credentials if available, otherwise server credentials
+  const userApp = await getUserStravaApp(userId);
+  const stravaClientId = userApp?.stravaClientId ?? process.env.STRAVA_CLIENT_ID!;
+  const stravaClientSecret = userApp?.stravaClientSecret ?? process.env.STRAVA_CLIENT_SECRET!;
+
   // Exchange code with Strava
   const tokenRes = await fetch("https://www.strava.com/oauth/token", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      client_id: process.env.STRAVA_CLIENT_ID!,
-      client_secret: process.env.STRAVA_CLIENT_SECRET!,
+      client_id: stravaClientId,
+      client_secret: stravaClientSecret,
       code,
       grant_type: "authorization_code",
     }),

@@ -45,6 +45,38 @@ a:hover {
   line-height: 1.6;
 }
 
+.tab-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #2a2a2a;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab:hover {
+  color: #ededed;
+}
+
+.tab.active {
+  color: #fc4c02;
+  border-bottom-color: #fc4c02;
+  font-weight: 600;
+}
+
 .steps {
   display: flex;
   flex-direction: column;
@@ -197,9 +229,237 @@ a:hover {
   color: #fc4c02;
 }
 
+.privacy-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.privacy-section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.privacy-section p {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.privacy-section ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.privacy-section li {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  line-height: 1.5;
+}
+
 .footer {
   border-top: 1px solid #2a2a2a;
   padding-top: 24px;
   font-size: 0.85rem;
   color: #666;
+}
+
+.substeps {
+  margin-top: 10px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.substeps li {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  line-height: 1.5;
+}
+
+.inline-code {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: "SF Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.8rem;
+  color: #fc4c02;
+}
+
+/* Setup page */
+.setup-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.setup-option {
+  background: #111;
+  border: 2px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  color: inherit;
+  font-family: inherit;
+  width: 100%;
+}
+
+.setup-option:hover:not(:disabled) {
+  border-color: #444;
+}
+
+.setup-option.active {
+  border-color: #fc4c02;
+}
+
+.setup-option.disabled-option {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.option-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.option-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.option-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #fc4c02;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.option-badge.pending {
+  background: #333;
+  color: #888;
+}
+
+.setup-option p {
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  line-height: 1.5;
+}
+
+.setup-instructions {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.setup-instructions h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.setup-instructions ol {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.setup-instructions li {
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  line-height: 1.5;
+}
+
+.setup-instructions code {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: "SF Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.8rem;
+  color: #fc4c02;
+}
+
+.setup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ccc;
+}
+
+.form-field input {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  color: #ededed;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-field input:focus {
+  border-color: #fc4c02;
+}
+
+.form-error {
+  font-size: 0.85rem;
+  color: #ff4444;
+}
+
+.submit-button {
+  background: #fc4c02;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #e04400;
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
