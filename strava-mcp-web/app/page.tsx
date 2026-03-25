@@ -177,8 +177,30 @@ export default function Home() {
               ) : (
                 <>
                   <p className="step-description">
-                    Open <strong>PowerShell</strong> (press <code className="inline-code">Win + X</code>, click
-                    {" "}<strong>Terminal</strong> or <strong>PowerShell</strong>) and run these commands one by one:
+                    First, make sure Python is installed. Open <strong>PowerShell</strong> (press{" "}
+                    <code className="inline-code">Win + X</code>, click <strong>Terminal</strong> or{" "}
+                    <strong>PowerShell</strong>) and run:
+                  </p>
+                  <div className="url-box">
+                    <code className="url-text">python --version</code>
+                    <button className="copy-button" onClick={() => {
+                      navigator.clipboard.writeText("python --version");
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 2000);
+                    }}>
+                      {copied ? "Copied!" : "Copy"}
+                    </button>
+                  </div>
+                  <p className="step-description" style={{ marginTop: 10 }}>
+                    If you see &quot;Python 3.x.x&quot;, skip ahead. If not, install Python
+                    from{" "}
+                    <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">
+                      python.org/downloads
+                    </a>{" "}
+                    — <strong>check &quot;Add Python to PATH&quot;</strong> during install, then restart PowerShell.
+                  </p>
+                  <p className="step-description" style={{ marginTop: 16 }}>
+                    Then install the MCP server:
                   </p>
                   <div className="url-box">
                     <code className="url-text">pip install strava-training-mcp</code>
