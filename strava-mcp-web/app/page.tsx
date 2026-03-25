@@ -177,14 +177,13 @@ export default function Home() {
               ) : (
                 <>
                   <p className="step-description">
-                    First, make sure Python is installed. Open <strong>PowerShell</strong> (press{" "}
-                    <code className="inline-code">Win + X</code>, click <strong>Terminal</strong> or{" "}
-                    <strong>PowerShell</strong>) and run:
+                    Open <strong>PowerShell</strong> (press <code className="inline-code">Win + X</code>, click
+                    {" "}<strong>Terminal</strong> or <strong>PowerShell</strong>) and paste this command:
                   </p>
                   <div className="url-box">
-                    <code className="url-text">python --version</code>
+                    <code className="url-text" style={{ fontSize: "0.75rem" }}>{WIN_INSTALL_CMD}</code>
                     <button className="copy-button" onClick={() => {
-                      navigator.clipboard.writeText("python --version");
+                      navigator.clipboard.writeText(WIN_INSTALL_CMD);
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
                     }}>
@@ -192,59 +191,9 @@ export default function Home() {
                     </button>
                   </div>
                   <p className="step-description" style={{ marginTop: 10 }}>
-                    If you see &quot;Python 3.x.x&quot;, skip ahead. If not, install Python
-                    from{" "}
-                    <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">
-                      python.org/downloads
-                    </a>{" "}
-                    — <strong>check &quot;Add Python to PATH&quot;</strong> during install, then restart PowerShell.
-                  </p>
-                  <p className="step-description" style={{ marginTop: 16 }}>
-                    Then install the MCP server:
-                  </p>
-                  <div className="url-box">
-                    <code className="url-text">pip install strava-training-mcp</code>
-                    <button className="copy-button" onClick={() => {
-                      navigator.clipboard.writeText("pip install strava-training-mcp");
-                      setCopied(true);
-                      setTimeout(() => setCopied(false), 2000);
-                    }}>
-                      {copied ? "Copied!" : "Copy"}
-                    </button>
-                  </div>
-                  <p className="step-description" style={{ marginTop: 10 }}>
-                    Then authenticate with Strava:
-                  </p>
-                  <div className="url-box">
-                    <code className="url-text">strava-training-mcp --auth</code>
-                    <button className="copy-button" onClick={() => {
-                      navigator.clipboard.writeText("strava-training-mcp --auth");
-                      setCopied(true);
-                      setTimeout(() => setCopied(false), 2000);
-                    }}>
-                      {copied ? "Copied!" : "Copy"}
-                    </button>
-                  </div>
-                  <p className="step-description" style={{ marginTop: 10 }}>
-                    Enter your Client ID and Client Secret from step 1. A browser
-                    will open to authorize with Strava.
-                  </p>
-                  <p className="step-description" style={{ marginTop: 10 }}>
-                    Finally, open Claude Desktop → <strong>Settings → Developer → Edit Config</strong> and
-                    add this:
-                  </p>
-                  <div className="url-box" style={{ flexDirection: "column", alignItems: "stretch" }}>
-                    <pre className="url-text" style={{ whiteSpace: "pre", fontSize: "0.8rem", lineHeight: 1.5 }}>{DESKTOP_CONFIG}</pre>
-                    <button className="copy-button" style={{ alignSelf: "flex-end" }} onClick={() => {
-                      navigator.clipboard.writeText(DESKTOP_CONFIG);
-                      setCopied(true);
-                      setTimeout(() => setCopied(false), 2000);
-                    }}>
-                      {copied ? "Copied!" : "Copy"}
-                    </button>
-                  </div>
-                  <p className="step-description" style={{ marginTop: 10 }}>
-                    Restart Claude Desktop. You should see the Strava tools in your conversation.
+                    This will install Python (if needed), set up the MCP server,
+                    connect your Strava account, and configure Claude Desktop
+                    automatically. Restart Claude Desktop when done.
                   </p>
                 </>
               )}
@@ -314,6 +263,8 @@ export default function Home() {
 }
 
 const INSTALL_CMD = "curl -fsSL https://raw.githubusercontent.com/ArjanLig/strava-mcp/main/install.sh | bash";
+
+const WIN_INSTALL_CMD = "irm https://raw.githubusercontent.com/ArjanLig/strava-mcp/main/install.ps1 | iex";
 
 const DESKTOP_CONFIG = `{
   "mcpServers": {
