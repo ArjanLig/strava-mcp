@@ -77,6 +77,37 @@ a:hover {
   font-weight: 600;
 }
 
+.os-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.os-tab {
+  flex: 1;
+  padding: 8px 12px;
+  background: #1a1a1a;
+  border: none;
+  color: #a0a0a0;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+}
+
+.os-tab:not(:last-child) {
+  border-right: 1px solid #2a2a2a;
+}
+
+.os-tab.active {
+  background: #fc4c02;
+  color: #fff;
+  font-weight: 600;
+}
+
 .steps {
   display: flex;
   flex-direction: column;
