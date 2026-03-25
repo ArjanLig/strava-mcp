@@ -155,9 +155,8 @@ export default function Home() {
               {os === "mac" ? (
                 <>
                   <p className="step-description">
-                    Open Terminal and paste this command. It installs the server,
-                    connects your Strava account, and configures Claude Desktop — all
-                    in one go.
+                    Open <strong>Terminal</strong> (press <code className="inline-code">⌘ + Space</code>, type
+                    {" "}<code className="inline-code">Terminal</code>, press Enter) and paste this command:
                   </p>
                   <div className="url-box">
                     <code className="url-text" style={{ fontSize: "0.8rem" }}>{INSTALL_CMD}</code>
@@ -178,7 +177,8 @@ export default function Home() {
               ) : (
                 <>
                   <p className="step-description">
-                    Open PowerShell and run these commands one by one:
+                    Open <strong>PowerShell</strong> (press <code className="inline-code">Win + X</code>, click
+                    {" "}<strong>Terminal</strong> or <strong>PowerShell</strong>) and run these commands one by one:
                   </p>
                   <div className="url-box">
                     <code className="url-text">pip install strava-training-mcp</code>
