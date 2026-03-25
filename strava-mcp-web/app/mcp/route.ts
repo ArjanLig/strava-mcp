@@ -4,6 +4,8 @@ import { ListToolsRequestSchema, CallToolRequestSchema } from "@modelcontextprot
 import { verifyAccessToken } from "@/lib/crypto";
 import { tools, handleTool } from "@/lib/tools";
 
+export const maxDuration = 30;
+
 const WWW_AUTHENTICATE = 'Bearer resource_metadata="/.well-known/oauth-authorization-server"';
 
 async function authenticate(req: Request): Promise<string> {
