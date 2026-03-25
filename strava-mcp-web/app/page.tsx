@@ -18,9 +18,10 @@ export default function Home() {
       <div className="hero">
         <h1>Strava for Claude</h1>
         <p className="subtitle">
-          Turn Claude into your personal cycling coach. This MCP server connects
+          Turn Claude into your personal training coach. This MCP server connects
           your Strava data to Claude — giving it real-time access to your
-          activities, training load, and fitness trends.
+          activities, training load, and fitness trends. Works with cycling,
+          running, and any sport you track on Strava.
         </p>
       </div>
 
