@@ -39,6 +39,7 @@ export default function Home() {
                 claude.ai
               </a>{" "}
               — works with any plan, including free.
+              Free plans can add 1 custom connector, Pro and Max are unlimited.
             </p>
           </div>
         </div>
