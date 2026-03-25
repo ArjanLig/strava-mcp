@@ -45,6 +45,20 @@ export default function Home() {
       {tab === "cloud" ? (
         <section className="steps">
           <div className="step">
+            <div className="step-number">0</div>
+            <div className="step-content">
+              <h2>Get Claude Pro or Max</h2>
+              <p className="step-description">
+                Custom connectors require a{" "}
+                <a href="https://claude.ai/upgrade" target="_blank" rel="noopener noreferrer">
+                  Claude Pro or Max subscription
+                </a>. Already have one? Skip to step 1.
+                On the free plan? Switch to the <strong>Claude Desktop / Free</strong> tab above.
+              </p>
+            </div>
+          </div>
+
+          <div className="step">
             <div className="step-number">1</div>
             <div className="step-content">
               <h2>Create a Strava API app</h2>
@@ -110,6 +124,20 @@ export default function Home() {
         </section>
       ) : (
         <section className="steps">
+          <div className="step">
+            <div className="step-number">0</div>
+            <div className="step-content">
+              <h2>Install Claude Desktop</h2>
+              <p className="step-description">
+                Download and install{" "}
+                <a href="https://claude.ai/download" target="_blank" rel="noopener noreferrer">
+                  Claude Desktop
+                </a>{" "}
+                if you haven&apos;t already. This works with any Claude plan, including free.
+              </p>
+            </div>
+          </div>
+
           <div className="step">
             <div className="step-number">1</div>
             <div className="step-content">
