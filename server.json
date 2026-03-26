@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.ArjanLig/strava-mcp",
+  "title": "Strava Training MCP",
+  "description": "Connect Strava training data to Claude for training load analysis and activity insights",
+  "repository": {
+    "url": "https://github.com/ArjanLig/strava-mcp",
+    "source": "github"
+  },
+  "version": "0.3.2",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "strava-training-mcp",
+      "version": "0.3.2",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

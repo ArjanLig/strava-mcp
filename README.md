@@ -1,3 +1,4 @@
+<!-- mcp-name: io.github.ArjanLig/strava-mcp -->
 # Strava MCP Server
 
 [![MCP Badge](https://lobehub.com/badge/mcp/arjanlig-strava-mcp-server)](https://lobehub.com/mcp/arjanlig-strava-mcp-server)
