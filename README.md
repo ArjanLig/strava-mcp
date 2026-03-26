@@ -8,21 +8,22 @@ Connect your Strava training data to Claude. This MCP server turns Claude into y
 
 ## Install
 
-Works with Claude Desktop and claude.ai on any plan (free users get 1 custom connector).
+Works with [Claude Desktop](https://claude.ai/download) and [claude.ai](https://claude.ai) on any plan. Free plans can add 1 custom connector (remove any existing connector first), Pro and Max are unlimited.
 
 ### 1. Create a Strava API app
 
-Go to [strava.com/settings/api](https://www.strava.com/settings/api) and create an app:
-- **Application Name / Category / Description** — anything works
-- **Authorization Callback Domain** — `strava-mcp-web.vercel.app`
+This takes about 2 minutes. You need a free Strava API app so Claude can access your data.
 
-Note your **Client ID** and **Client Secret**.
+1. Go to [strava.com/settings/api](https://www.strava.com/settings/api)
+2. Fill in the form — **Application Name**, **Category**, and **Description** can be anything (e.g. "My Claude connector")
+3. Set **Authorization Callback Domain** to `strava-mcp-web.vercel.app`
+4. Click **Create** and note your **Client ID** and **Client Secret**
 
 ### 2. Add the connector
 
-Open Claude Desktop or [claude.ai](https://claude.ai) → **Settings** → **Connectors** → **Add custom connector**
-
-Paste this URL:
+1. Open Claude Desktop or [claude.ai](https://claude.ai)
+2. Go to **Settings → Connectors → Add custom connector**
+3. Paste this URL and save:
 
 ```
 https://strava-mcp-web.vercel.app/mcp
@@ -30,7 +31,7 @@ https://strava-mcp-web.vercel.app/mcp
 
 ### 3. Connect
 
-Click **Connect** on the newly added connector. Enter your Strava Client ID and Client Secret, then authorize with Strava.
+Click **Connect** on the newly added connector. This opens a page where you enter your Strava Client ID and Client Secret, then authorize with Strava.
 
 That's it! Ask Claude about your training.
 
